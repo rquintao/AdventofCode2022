@@ -22,7 +22,7 @@ public class Day3First {
         int points = 0;
 
         // Open the file
-        FileInputStream fstream = new FileInputStream("input/inputD3Simple.txt");
+        FileInputStream fstream = new FileInputStream("input/inputD3.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
         String strLine;
 
@@ -34,15 +34,15 @@ public class Day3First {
 
             final Character error = firstSack.stream().filter(secondSack::contains).findFirst().orElse(null);
 
-            if (error.hashCode() > 97){
-                System.out.println(error.hashCode() - 100);
-                 points += error.hashCode() - 81;
-            } else {
-                System.out.println(error.hashCode() - 38);
-                points += error.hashCode() - 38;
+            if (error != null){
+                if ((int) error >= 97){
+                     points += (int) error - 96;
+                } else {
+                    points += (int) error - 38;
+                }
             }
 
-            // System.out.println(error.hashCode());
+             System.out.println("Points: " + points);
 
         }
 
